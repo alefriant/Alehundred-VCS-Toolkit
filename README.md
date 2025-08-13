@@ -36,6 +36,7 @@ This section will guide you through setting up your own self-hosted VCS server u
 * A Raspberry Pi (Model 3B+ or newer recommended) or other ARM-based board.
 * Python 3.9 or higher installed.
 * An external hard drive or high-capacity SD card for storage.
+* For external access, you will need to configure Port Forwarding on your router and consider using a Dynamic DNS (DDNS) service.
 
 ### Installation
 
