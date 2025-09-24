@@ -52,17 +52,17 @@ This section will guide you through setting up your own self-hosted VCS server u
     This will update, install dependencies, install the toolkit, and set up the PATH all in one go.
 
     ```bash
-    sudo apt update && sudo apt install python3-pip -y
-    pip install --break-system-packages alehundred-depot
+    sudo apt update && sudo apt upgrade -y && sudo apt install python3-pip -y
+    pip install --break-system-packages alehundred-depot-en
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
-    echo "¡Setup complete! Run 'alehundred-depot' to start."
+    echo "¡Setup complete! Run 'alehundred-depot-en' to start."
     ```
 
 3.  **Run the program**
 
     ```bash
-    alehundred-depot
+    alehundred-depot-en
     ```
 
 ## 📜 License
