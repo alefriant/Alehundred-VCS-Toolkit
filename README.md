@@ -1,5 +1,5 @@
 # Alehundred-VCS-Toolkit
-A powerful, open-source toolkit to simplify the setup and management of a professional, self-hosted version control system on low-cost ARM hardware.
+Un potente toolkit de código abierto para simplificar la configuración y gestión de un sistema de control de versiones profesional y auto-alojado en hardware ARM de bajo costo.
 
 <div align="center">
 
@@ -9,82 +9,68 @@ A powerful, open-source toolkit to simplify the setup and management of a profes
 [![Raspberry Pi](https://img.shields.io/badge/Runs%20on-Raspberry%20Pi-red.svg)](https://www.raspberrypi.org/)
 [![Unreal Engine](https://img.shields.io/badge/For-Unreal%20Engine-blueviolet.svg)](https://www.unrealengine.com/)
 
-A powerful, open-source toolkit designed to simplify the setup and management of a professional, self-hosted version control system on low-cost **ARM hardware** like the Raspberry Pi.
+Un potente toolkit de código abierto diseñado para simplificar la configuración y gestión de un sistema de control de versiones profesional y auto-alojado en hardware **ARM** de bajo costo, como la Raspberry Pi.
 
-**This is the open-source engine that will power Alehundred Depot.**
+**Este es el motor de código abierto que impulsará Alehundred Depot.**
 
 </div>
 
 ---
 
-## 📖 About The Project
+## 📖 Sobre el Proyecto
 
-Indie developers for games and complex software often face a significant challenge: professional-grade version control systems (VCS) are either too expensive or not suited for large binary files.
+Los desarrolladores de juegos y software complejo a menudo enfrentan un desafío importante: los sistemas de control de versiones (VCS) de nivel profesional son demasiado caros o no son adecuados para archivos binarios grandes.
 
-* **The Problem:** Commercial solutions like Perforce Helix Core are the industry standard for handling large assets, but the cost of cloud hosting is a major barrier for small teams and solo developers. On the other hand, free platforms like GitHub are inefficient with the massive binary files (3D models, textures, audio) common in game development, leading teams to rely on messy, non-integrated solutions like Dropbox or Google Drive.
+* **El Problema:** Soluciones comerciales como Perforce Helix Core son el estándar de la industria para manejar grandes archivos, pero el costo del hosting en la nube es una barrera importante para equipos pequeños y desarrolladores en solitario. Por otro lado, plataformas gratuitas como GitHub son ineficientes con los archivos binarios masivos (modelos 3D, texturas, audio) comunes en el desarrollo de juegos, lo que lleva a los equipos a depender de soluciones desordenadas y no integradas como Dropbox o Google Drive.
 
-* **The Solution:** The Alehundred VCS Toolkit bridges this gap. It provides a set of scripts and tools to seamlessly install, configure, and manage a Perforce Helix Core server on a Raspberry Pi (or other **ARM-based** single-board computers). This approach transforms a small, one-time hardware purchase into a robust, enterprise-level VCS, effectively democratizing professional workflows for everyone.
+* **La Solución:** El Toolkit Alehundred VCS cierra esta brecha. Proporciona un conjunto de scripts y herramientas para instalar, configurar y administrar sin problemas un servidor Perforce Helix Core en una Raspberry Pi (u otros computadores de placa única basados en **ARM**). Este enfoque transforma una pequeña compra única de hardware en un robusto VCS de nivel empresarial, democratizando eficazmente los flujos de trabajo profesionales para todos.
 
-This toolkit aims to empower indie creators to use the same tools as AAA studios with a fraction of the cost and full control over their own data.
+Este toolkit tiene como objetivo empoderar a los creadores independientes para que utilicen las mismas herramientas que los estudios AAA con una fracción del costo y con control total sobre sus propios datos.
 
-## 🚀 Getting Started
+## 🚀 Cómo Empezar
 
-This section will guide you through setting up your own self-hosted VCS server using the toolkit.
+Esta sección te guiará en la configuración de tu propio servidor VCS auto-alojado utilizando el toolkit.
 
-### Prerequisites
+### Prerrequisitos
 
-* A Raspberry Pi (Model 3B+ or newer recommended) or other ARM-based board.
-* Python 3.9 or higher installed.
-* An external hard drive or high-capacity SD card for storage.
-* For external access, you will need to configure Port Forwarding on your router and consider using a Dynamic DNS (DDNS) service.
+* Una Raspberry Pi (se recomienda el Modelo 3B+ o más nuevo) u otra placa basada en ARM.
+* Python 3.9 o superior instalado.
+* Un disco duro externo o una tarjeta SD de alta capacidad para el almacenamiento.
+* Para el acceso externo, necesitarás configurar el Reenvío de Puertos (*Port Forwarding*) en tu router y considerar el uso de un servicio de DNS Dinámico (DDNS).
 
-### Installation
+### Instalación
 
-*(Note: The toolkit is currently in early development. These instructions are the target goal.)*
+1.  **Conéctate a tu Raspberry Pi vía SSH**
 
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/alefriant/Alehundred-VCS-Toolkit.git](https://github.com/alefriant/Alehundred-VCS-Toolkit.git)
-    cd Alehundred-VCS-Toolkit
+    ```bash
+    # Reemplaza con tu usuario y hostname/IP real
+    ssh TuUsuario@NombreDeTuPi.local
     ```
-2.  **Run the automated setup script:**
-    ```sh
-    python setup.py
+    
+2.  **Copia, pega y ejecuta este bloque completo**
+
+    Esto actualizará el sistema, instalará las dependencias, instalará el toolkit y configurará el PATH, todo de una sola vez.
+
+    ```bash
+    sudo apt update && sudo apt install python3-pip -y
+    pip install --break-system-packages alehundred-depot-es
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    echo "¡Instalación completa! Ejecuta 'alehundred-depot' para empezar."
     ```
-3.  Follow the on-screen prompts to configure your server, create your first user, and set up your main depot.
 
-## 🗺️ Roadmap
+3.  **Ejecuta el programa**
 
-This project is just getting started! Here are some of the features planned for future releases:
+    ```bash
+    alehundred-depot
+    ```
 
-* [ ] **Automated Installer:** Core script to set up Helix Core on a fresh Raspberry Pi OS.
-* [ ] **Terminal-based UI (TUI):** A lightweight, Xtree-style management dashboard for users, depots, and server monitoring, designed to run directly in the terminal on Raspberry Pi OS Lite.
-* [ ] **Automated Backups:** A simple utility to schedule and manage backups of your server data to an external drive.
-* [ ] **Performance Monitoring:** Scripts to check server health, disk space, and memory usage.
-* [ ] **Detailed Documentation:** Step-by-step guides for advanced configurations.
+## 📜 Licencia
 
-See the [open issues](https://github.com/alefriant/Alehundred-VCS-Toolkit/issues) for a full list of proposed features (and known issues).
+Distribuido bajo la Licencia MIT. Revisa el archivo `LICENSE` para más información.
 
-## 🤝 Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-Don't forget to give the project a star! Thanks again!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## 📬 Contact
+## 📬 Contacto
 
 Alejandro Friant - (https://www.linkedin.com/in/alejandrofriant/)
 
-Project Link: [https://github.com/alefriant/Alehundred-VCS-Toolkit](https://github.com/alefriant/Alehundred-VCS-Toolkit)
+Enlace del Proyecto: [https://github.com/alefriant/Alehundred-VCS-Toolkit](https://github.com/alefriant/Alehundred-VCS-Toolkit)
