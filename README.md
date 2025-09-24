@@ -40,44 +40,30 @@ This section will guide you through setting up your own self-hosted VCS server u
 
 ### Installation
 
-*(Note: The toolkit is currently in early development. These instructions are the target goal.)*
+1.  **Connect to your Raspberry Pi via SSH**
 
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/alefriant/Alehundred-VCS-Toolkit.git](https://github.com/alefriant/Alehundred-VCS-Toolkit.git)
-    cd Alehundred-VCS-Toolkit
+    ```bash
+    # Replace with your actual user and hostname/IP
+    ssh YourUserName@RaspberryName 
     ```
-2.  **Run the automated setup script:**
-    ```sh
-    python setup.py
+    
+2.  **Copy, paste, and run this entire block**
+
+    This will update, install dependencies, install the toolkit, and set up the PATH all in one go.
+
+    ```bash
+    sudo apt update && sudo apt install python3-pip -y
+    pip install --break-system-packages alehundred-depot-es
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    echo "¡Setup complete! Run 'alehundred-depot' to start."
     ```
-3.  Follow the on-screen prompts to configure your server, create your first user, and set up your main depot.
 
-## 🗺️ Roadmap
+3.  **Run the program**
 
-This project is just getting started! Here are some of the features planned for future releases:
-
-* [ ] **Automated Installer:** Core script to set up Helix Core on a fresh Raspberry Pi OS.
-* [ ] **Terminal-based UI (TUI):** A lightweight, Xtree-style management dashboard for users, depots, and server monitoring, designed to run directly in the terminal on Raspberry Pi OS Lite.
-* [ ] **Automated Backups:** A simple utility to schedule and manage backups of your server data to an external drive.
-* [ ] **Performance Monitoring:** Scripts to check server health, disk space, and memory usage.
-* [ ] **Detailed Documentation:** Step-by-step guides for advanced configurations.
-
-See the [open issues](https://github.com/alefriant/Alehundred-VCS-Toolkit/issues) for a full list of proposed features (and known issues).
-
-## 🤝 Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-
-Don't forget to give the project a star! Thanks again!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+    ```bash
+    alehundred-depot
+    ```
 
 ## 📜 License
 
