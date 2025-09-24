@@ -44,7 +44,7 @@ This section will guide you through setting up your own self-hosted VCS server u
 
     ```bash
     # Replace with your actual user and hostname/IP
-    ssh YourUserName@RaspberryName 
+    ssh YourUserName@RaspberryName.local 
     ```
     
 2.  **Copy, paste, and run this entire block**
