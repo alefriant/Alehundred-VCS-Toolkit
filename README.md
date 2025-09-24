@@ -53,7 +53,7 @@ This section will guide you through setting up your own self-hosted VCS server u
 
     ```bash
     sudo apt update && sudo apt install python3-pip -y
-    pip install --break-system-packages alehundred-depot-es
+    pip install --break-system-packages alehundred-depot-en
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
     echo "¡Setup complete! Run 'alehundred-depot' to start."
