@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.0
+### Version 9.2
 
 from . import tui
 import curses

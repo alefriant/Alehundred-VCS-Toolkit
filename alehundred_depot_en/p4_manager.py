@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.0
+### Version 9.2
 
 from . import utils
 import time
@@ -16,7 +16,8 @@ class P4Manager:
             "System Resources": {
                 "CPU Usage": utils.get_cpu_usage(),
                 "Memory Usage": utils.get_mem_usage(),
-                "Disk Usage (/)": utils.get_disk_usage()
+                "Disk Usage (/)": utils.get_disk_usage(),
+                "CPU Temperature": utils.get_cpu_temp()
             }
         }
         
@@ -44,7 +45,7 @@ class P4Manager:
                     "Server version": info_dict.get("Server version", "N/A"),
                 }
             else:
-                status_info["Perforce Server Status"]["Details"] = f"Process active, but not responding on port {P4_PORT}."
+                status_info["Perforce Server Status"]["Details"] = f"Process is active, but not responding on port {P4_PORT}."
         
         return status_info
 
@@ -63,7 +64,7 @@ class P4Manager:
             return
 
         steps = [
-            ("Step 1: Updating package list...", ["apt-get", "update"], True),
+            ("Step 1: Updating package lists...", ["apt-get", "update"], True),
             ("Step 2: Installing dependencies...", ["apt-get", "install", "-y", "wget", "python3-requests"], True)
         ]
 
@@ -108,7 +109,7 @@ class P4Manager:
         yield ('STATUS', "... OK")
 
         post_download_steps = [
-            ("Step 5: Granting execute permissions...", ["chmod", "+x", INSTALL_PATH_P4D, INSTALL_PATH_P4_CLIENT], True),
+            ("Step 5: Granting execution permissions...", ["chmod", "+x", INSTALL_PATH_P4D, INSTALL_PATH_P4_CLIENT], True),
             (f"Step 6: Creating root directory at {P4_ROOT}...", ["mkdir", "-p", P4_ROOT], True)
         ]
 
@@ -136,17 +137,17 @@ class P4Manager:
                 break
         
         if not server_is_up:
-            yield ('ERROR', "The server did not respond after 10 seconds!")
+            yield ('ERROR', "Server did not respond after 10 seconds!")
             return
         yield ('STATUS', "... OK")
 
-        yield ('STATUS', "Step 8: Creating 'admin' superuser...")
+        yield ('STATUS', "Step 8: Creating superuser 'admin'...")
         user_spec = f"User:\tadmin\nEmail:\tadmin@localhost\nFullName:\tAdmin User"
         create_user_cmd = ["sudo", INSTALL_PATH_P4_CLIENT, "-p", P4_PORT, "user", "-f", "-i"]
         
         proc_user = subprocess.run(create_user_cmd, input=user_spec, text=True, capture_output=True)
         if proc_user.returncode != 0:
-            yield ('ERROR', f"Superuser creation failed.\nDetail: {proc_user.stderr.strip()}")
+            yield ('ERROR', f"Failed to create superuser.\nDetail: {proc_user.stderr.strip()}")
             return
 
         pass_spec = f"admin12345\nadmin12345"

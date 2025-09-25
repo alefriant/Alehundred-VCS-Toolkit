@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.0
+### Version 9.2
 
 import subprocess
 import os
@@ -25,12 +25,15 @@ def ejecutar_comando_sistema(comando: list, con_sudo: bool = False):
         return (1, "", f"Unexpected error: {e}")
 
 def get_disk_usage():
-    code, out, _ = ejecutar_comando_sistema(["df", "-h", "/"])
+    code, out, _ = ejecutar_comando_sistema(["df", "--output=used,size,pcent", "--block-size=1K", "/"])
     if code == 0:
         lines = out.strip().split('\n')
         if len(lines) > 1:
             parts = lines[1].split()
-            return f"{parts[2]} / {parts[1]} ({parts[4]} Used)"
+            used_gb = float(parts[0]) / (1024*1024)
+            total_gb = float(parts[1]) / (1024*1024)
+            percent = parts[2]
+            return f"{used_gb:.6f}G / {int(total_gb)}G ({percent} Used)"
     return "Not available"
 
 def get_mem_usage():
@@ -49,6 +52,16 @@ def get_cpu_usage():
         if match:
             return f"{match.group(1)}% (User)"
     return "Not available"
+
+def get_cpu_temp():
+    try:
+        with open("/sys/class/thermal/thermal_zone0/temp", 'r') as f:
+            temp = int(f.read()) / 1000
+            return f"{temp:.1f}°C"
+    except FileNotFoundError:
+        return "Not available"
+    except Exception:
+        return "Error"
 
 def limpiar_pantalla():
     command = 'cls' if os.name == 'nt' else 'clear'
@@ -75,7 +88,7 @@ def ejecutar_y_yield_salida(comando: list, con_sudo: bool = False):
         yield ('RETURN_CODE', return_code)
 
     except Exception as e:
-        yield ('LOG', f"Unexpected error executing command: {e}")
+        yield ('LOG', f"Unexpected error while executing command: {e}")
         yield ('RETURN_CODE', 1)
 
 
