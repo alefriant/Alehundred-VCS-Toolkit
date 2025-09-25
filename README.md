@@ -64,6 +64,24 @@ This section will guide you through setting up your own self-hosted VCS server u
     ```bash
     alehundred-depot-en
     ```
+    
+## 🔄 Updates
+
+To ensure you have the latest features and fixes, update the toolkit regularly.
+
+1.  **Standard Command**
+
+    ```bash
+    pip install --upgrade --break-system-packages alehundred-depot-en
+    ```
+
+2.  **Forced Command (Recommended for Raspberry Pi)**
+
+    If the command above doesn't install the latest version, it may be due to a cache in the `piwheels` repository. To force the update directly from PyPI, use this command:
+
+    ```bash
+    pip install --upgrade --index-url [https://pypi.org/simple/](https://pypi.org/simple/) --break-system-packages alehundred-depot-en
+    ```
 
 ## 📜 License
 
