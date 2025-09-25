@@ -64,6 +64,23 @@ Esta sección te guiará en la configuración de tu propio servidor VCS auto-alo
     ```bash
     alehundred-depot-es
     ```
+## 🔄 Actualización
+
+Para asegurarte de tener las últimas características y correcciones, actualiza el toolkit regularmente.
+
+1.  **Comando estándar**
+
+    ```bash
+    pip install --upgrade --break-system-packages alehundred-depot-es
+    ```
+
+2.  **Comando forzado (Recomendado para Raspberry Pi)**
+
+    Si el comando anterior no instala la última versión, puede deberse a un caché en el repositorio de `piwheels`. Para forzar la actualización directamente desde PyPI, usa este comando:
+
+    ```bash
+    pip install --upgrade --index-url [https://pypi.org/simple/](https://pypi.org/simple/) --break-system-packages alehundred-depot-es
+    ```
 
 ## 📜 Licencia
 
