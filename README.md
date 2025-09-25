@@ -62,7 +62,7 @@ Esta sección te guiará en la configuración de tu propio servidor VCS auto-alo
 3.  **Ejecuta el programa**
 
     ```bash
-    alehundred-depot
+    alehundred-depot-es
     ```
 
 ## 📜 Licencia
