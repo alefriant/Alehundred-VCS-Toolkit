@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.0
+### Version 9.2
 
 from . import utils
 import time
@@ -16,7 +16,8 @@ class P4Manager:
             "Recursos del Sistema": {
                 "Uso de CPU": utils.get_cpu_usage(),
                 "Uso de Memoria": utils.get_mem_usage(),
-                "Uso de Disco (/)": utils.get_disk_usage()
+                "Uso de Disco (/)": utils.get_disk_usage(),
+                "Temperatura CPU": utils.get_cpu_temp()
             }
         }
         

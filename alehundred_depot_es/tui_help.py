@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.5
+### Version 9.2
 
 import curses
 

@@ -1,5 +1,5 @@
 ### Alejandro Friant 2025
-### Version 8.0
+### Version 9.2
 
 import time
 import curses
@@ -7,6 +7,7 @@ from . import p4_manager
 from . import tui_help
 from . import tui_status
 from . import tui_user
+from . import tui_restart
 
 class TUIController:
     def __init__(self, stdscr):
@@ -47,7 +48,7 @@ class TUIController:
         window.addstr(1, (win_w - len(title)) // 2, title)
         
         menu_lines = [
-            "1. Instalar Servidor Perforce (MVP)",
+            "1. Instalar Servidor Perforce",
             "2. Gestionar Usuarios",
             "3. Ver Estado del Servidor",
             "4. Salir"
@@ -57,11 +58,15 @@ class TUIController:
             window.addstr(6 + (i * 3), (win_w - len(line)) // 2, num + ".", self.color_cyan_text)
             window.addstr(text, self.color_main_win)
             
-        footer_key = {'x': 3, 'key': 'F1', 'text': ' Ayuda'}
-        window.addstr(win_h - 2, footer_key['x'], footer_key['key'], self.color_yellow_text)
-        window.addstr(footer_key['text'], self.color_main_win)
+        footer_f1 = {'x': 3, 'key': 'F1', 'text': ' Ayuda'}
+        window.addstr(win_h - 2, footer_f1['x'], footer_f1['key'], self.color_yellow_text)
+        window.addstr(footer_f1['text'], self.color_main_win)
+        
+        footer_f2 = {'x': 13, 'key': 'F2', 'text': ' Reiniciar Servidor'}
+        window.addstr(win_h - 2, footer_f2['x'], footer_f2['key'], self.color_yellow_text)
+        window.addstr(footer_f2['text'], self.color_main_win)
 
-        version_str = "Alehundred-Depot 8.0"
+        version_str = "Alehundred-Depot 9.2"
         window.addstr(win_h - 2, win_w - len(version_str) - 2, version_str)
         
         self.stdscr.refresh()
@@ -193,7 +198,7 @@ class TUIController:
         elif final_status == 'ERROR':
             self._show_dialog("Error", [final_message])
         elif final_status == 'ALREADY_INSTALLED':
-            self._show_dialog("Información", ["El servidor ya se encuentra instalado."])
+            self._show_dialog("Información", ["El servidor ya se encuentra instalado.", "Si no está en ejecución, presione F2 en el", "menú para ver cómo reiniciarlo."])
 
     def run(self):
         while True:
@@ -215,6 +220,9 @@ class TUIController:
 
             elif key == curses.KEY_F1:
                 tui_help.show_help_screen(self.stdscr)
+
+            elif key == curses.KEY_F2:
+                tui_restart.show_restart_screen(self.stdscr)
 
             elif key_char == '4':
                 if self._show_confirmation():
