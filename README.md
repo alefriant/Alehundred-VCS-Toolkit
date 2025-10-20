@@ -5,7 +5,7 @@ A powerful, open-source toolkit to simplify the setup and management of a profes
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
 [![Python](https://img.shields.io/badge/Python-3.9+-yellow.svg)](https://www.python.org/)
-[![Perforce Helix Core](https://img.shields.io/badge/Supports-Perforce%20Helix%20Core-purple.svg)](https://www.perforce.com/products/helix-core)
+[![Perforce P4](https://img.shields.io/badge/Supports-Perforce%20P4-purple.svg)](https://www.perforce.com/products/helix-core)
 [![Raspberry Pi](https://img.shields.io/badge/Runs%20on-Raspberry%20Pi-red.svg)](https://www.raspberrypi.org/)
 [![Unreal Engine](https://img.shields.io/badge/For-Unreal%20Engine-blueviolet.svg)](https://www.unrealengine.com/)
 
@@ -21,9 +21,9 @@ A powerful, open-source toolkit designed to simplify the setup and management of
 
 Indie developers for games and complex software often face a significant challenge: professional-grade version control systems (VCS) are either too expensive or not suited for large binary files.
 
-* **The Problem:** Commercial solutions like Perforce Helix Core are the industry standard for handling large assets, but the cost of cloud hosting is a major barrier for small teams and solo developers. On the other hand, free platforms like GitHub are inefficient with the massive binary files (3D models, textures, audio) common in game development, leading teams to rely on messy, non-integrated solutions like Dropbox or Google Drive.
+* **The Problem:** Commercial solutions like Perforce (P4) are the industry standard for handling large assets, but the cost of cloud hosting is a major barrier for small teams and solo developers. On the other hand, free platforms like GitHub are inefficient with the massive binary files (3D models, textures, audio) common in game development, leading teams to rely on messy, non-integrated solutions like Dropbox or Google Drive.
 
-* **The Solution:** The Alehundred VCS Toolkit bridges this gap. It provides a set of scripts and tools to seamlessly install, configure, and manage a Perforce Helix Core server on a Raspberry Pi (or other **ARM-based** single-board computers). This approach transforms a small, one-time hardware purchase into a robust, enterprise-level VCS, effectively democratizing professional workflows for everyone.
+* **The Solution:** The Alehundred VCS Toolkit bridges this gap. It provides a set of scripts and tools to seamlessly install, configure, and manage a Perforce (P4) server on a Raspberry Pi (or other **ARM-based** single-board computers). This approach transforms a small, one-time hardware purchase into a robust, enterprise-level VCS, effectively democratizing professional workflows for everyone.
 
 This toolkit aims to empower indie creators to use the same tools as AAA studios with a fraction of the cost and full control over their own data.
 
