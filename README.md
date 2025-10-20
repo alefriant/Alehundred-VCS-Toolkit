@@ -1,7 +1,3 @@
-Por supuesto. Aquí tienes la traducción completa y detallada de tu README, manteniendo toda la estructura y formato.
-
-He adaptado los comandos de instalación para que usen la versión en español de tu paquete (alehundred-depot-es).
-
 # Alehundred-VCS-Toolkit
 Un potente toolkit de código abierto para simplificar la configuración y gestión de un sistema de control de versiones profesional y auto-alojado en hardware ARM de bajo costo.
 
@@ -96,4 +92,5 @@ Distribuido bajo la Licencia MIT. Revisa el archivo `LICENSE` para más informac
 Alejandro Friant - (https://www.linkedin.com/in/alejandrofriant/)
 
 Enlace del Proyecto: [https://github.com/alefriant/Alehundred-VCS-Toolkit](https://github.com/alefriant/Alehundred-VCS-Toolkit)
+
 
